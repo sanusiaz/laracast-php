@@ -1,1 +1,8 @@
-<!-- This is the home page here -->
+<?php
+    include_once dirname(__FILE__) . './partials/contents.php';
+?>
+This is the home page
+
+</body>
+
+</html>

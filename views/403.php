@@ -3,7 +3,7 @@
 ?>
 
 <div class="w-full text-3xl font-semibold capitalize h-full py-56 flex place-content-center place-items-center">
-    <h1>404 Page Not Found</h1>
+    <h1>UnAuthorized Access</h1>
 </div>
 </body>
 

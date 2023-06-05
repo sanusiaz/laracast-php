@@ -1,9 +1,10 @@
 <?php
 
-    
+    include_once dirname(__FILE__) . './Response.php';
     class Database
     {
         protected $pdo;
+        protected $statement;
 
         public function __construct($config) 
         {
@@ -17,9 +18,30 @@
 
         public function query($query)
         {
-            $statement = $this->pdo->prepare($query);
-            $statement->execute();
-            return $statement;
+            $this->statement = $this->pdo->prepare($query);
+            $this->statement->execute();
+            return $this;
+        }
+
+        public function fetch()
+        {
+            return $this->statement->fetch();
+        }
+
+        public function get()
+        {
+            return $this->statement->fetchAll();
+        }
+
+        public function findOrFail()
+        {
+            $results = $this->statement->fetchAll();
+
+            if ( !$results ) {
+                abort(Response::NOT_FOUND);
+            }
+
+            return $results;
         }
     }
 

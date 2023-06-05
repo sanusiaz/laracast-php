@@ -13,4 +13,10 @@
 
         exit();
     }
+
+    function authorize( $id, $user_id, $status = Response::UNAUTHORIZED ) {
+        if ( !($id === $user_id) ) {
+            abort( $status );
+        } 
+    }
 ?>
