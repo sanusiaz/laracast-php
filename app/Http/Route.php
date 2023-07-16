@@ -33,14 +33,34 @@
             }
         }
 
-        public static function __parseRoute($path, $mustUseMethod = 'GET', $callBackFunc = "")
+        public static function __parseRoute($path, $mustUseMethod = 'GET', $action = "")
         {
             if ( array_key_exists( $path . '@' . $mustUseMethod, self::$registeredRoutes ) ) {
                 if ( self::__getServerRequest()['REQUEST_METHOD'] === $mustUseMethod ) {
                     $serverPath = parse_url(self::__getServerRequest()['REQUEST_URI'])['path'];
                     if ( $serverPath === $path ) {
-                        if ($callBackFunc !== null ) {
-                            $callBackFunc();
+                        if ( is_callable( $action ) ) {
+                            $action();
+                        }
+                        elseif ( is_string( $action ) ) {
+                            self::loadView($action);
+                            // Simply Load the view
+                        }
+                        else {
+                            // it is a class in this format only [ CLASSANME, METHOD ]
+                            $class = $action[0];
+                            $method = $action[1];
+
+                            if ( class_exists( $class ) ) {
+
+                                $class = new $class;
+                                if ( method_exists( $class, $method ) ) {
+                                    $class->$method();
+                                }
+                            }
+                            else {
+                                die($class . ' => Not Found');
+                            }
                         }
                     }
 
@@ -59,5 +79,17 @@
         public static function __getAllRoutes()
         {
             return self::$registeredRoutes;
+        }
+
+
+        public static function loadView($viewName) 
+        {
+            $viewName = str_replace( ".",  "/", $viewName );
+            if ( file_exists( ABSOLUTE_PATH . './resources/views/' . $viewName . '.php' ) ) {
+                include_once  ABSOLUTE_PATH . './resources/views/' . $viewName . '.php';
+            }
+            else {
+                die('Please Create View File ' . $viewName);
+            }
         }
     }

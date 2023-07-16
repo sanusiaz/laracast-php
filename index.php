@@ -1,11 +1,3 @@
 <?php
-
-function abort() {
-    die('Not Found');
-    return http_response_code(404);
-}
-
-function go_ahead( $route ) {
-    die($route);
-}
+    define( 'ABSOLUTE_PATH', dirname(__FILE__) );
     require_once('router.php');
