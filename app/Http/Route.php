@@ -43,7 +43,7 @@
                             $action();
                         }
                         elseif ( is_string( $action ) ) {
-                            self::loadView($action);
+                            loadView($action);
                             // Simply Load the view
                         }
                         else {
@@ -81,15 +81,4 @@
             return self::$registeredRoutes;
         }
 
-
-        public static function loadView($viewName) 
-        {
-            $viewName = str_replace( ".",  "/", $viewName );
-            if ( file_exists( ABSOLUTE_PATH . './resources/views/' . $viewName . '.php' ) ) {
-                include_once  ABSOLUTE_PATH . './resources/views/' . $viewName . '.php';
-            }
-            else {
-                die('Please Create View File ' . $viewName);
-            }
-        }
     }
