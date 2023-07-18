@@ -1,7 +1,7 @@
 
-    <?php include_once (dirname(VIEWS_PATH) . '/parts/header.php');?>
+    <?php include_once view('/parts/footer.php');?>
 
     <main class="p-3">
         this is the home page
     </main>
-    <?php include_once dirname(VIEWS_PATH) . '/parts/footer.php';?>
+    <?php include_once view('/parts/footer.php');?>

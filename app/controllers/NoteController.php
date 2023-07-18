@@ -3,12 +3,14 @@
     require_once( dirname(__FILE__, 2) . '/Database/DB.php');
     use App\Database\DB;
 
-    class HomePageController {
+    class NoteController {
         public function index() {
 
             $Db = new DB();
-            $users = $Db->query("select * from users")->get();
+            $notes = $Db->query("select * from notes")->get();
             
-            view('home/index');
+            view('notes/index', [
+                'notes' => $notes
+            ]);
         }
     }

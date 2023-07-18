@@ -43,7 +43,7 @@
                             $action();
                         }
                         elseif ( is_string( $action ) ) {
-                            loadView($action);
+                            view($action);
                             // Simply Load the view
                         }
                         else {
