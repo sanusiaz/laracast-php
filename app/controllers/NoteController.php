@@ -13,4 +13,14 @@
                 'notes' => $notes
             ]);
         }
+
+        public function create()
+        {
+            view('notes/create');
+        }
+
+        public function store()
+        {
+            echo "Hit here";
+        }
     }

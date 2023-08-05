@@ -14,4 +14,5 @@
     Route::get('/', [HomePageController::class, 'index']);
     Route::get('/about', 'about/index');
     Route::get('/notes', [NoteController::class, 'index']);
+    Route::get('/notes/create', [NoteController::class, 'create']);
    

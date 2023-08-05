@@ -23,11 +23,11 @@
     function view($path, $attributes = [])
     {
         extract($attributes);
-
-        if ( file_exists( 'resources/views/' . $path ) ) {
-            include_once 'resources/views/' . $path;
+        
+        if ( file_exists( dirname(__FILE__) . './resources/views/' . $path . '.php' ) ) {
+            include_once dirname(__FILE__) . './resources/views/' . $path . '.php';
         }
         else {
-            echo 'View File Not Found';
+            echo 'View File Not Found '  . $path;
         }
     }

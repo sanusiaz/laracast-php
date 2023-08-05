@@ -10,8 +10,8 @@
 
 </head>
 
-<body>
+<body class="bg-gray-200">
 
 <header>
-    <?php include_once dirname(VIEWS_PATH) . './parts/nav.php';?>
+    <?php view('/parts/nav');?>
 </header>

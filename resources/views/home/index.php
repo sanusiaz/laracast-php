@@ -1,7 +1,7 @@
 
-    <?php include_once view('/parts/footer.php');?>
+    <?php view('/parts/header');?>
 
     <main class="p-3">
         this is the home page
     </main>
-    <?php include_once view('/parts/footer.php');?>
+    <?php view('/parts/footer');?>
